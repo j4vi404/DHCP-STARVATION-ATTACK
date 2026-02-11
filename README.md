@@ -112,7 +112,7 @@ sudo python3 DHCP_Starvation.py
 |-----------|-------|
 | Red Objetivo | 15.0.7.0/24 |
 | Servidor DHCP |  10.0.0.1 |
-| Pool DHCP | 10.0.0.100 - 10.0.0.150 |
+| Pool DHCP | 15.0.7.2 - 15.0.7.254 |
 | Total IPs | 50 |
 | Lease Time | 86400 seg (24h) |
 
@@ -121,7 +121,7 @@ sudo python3 DHCP_Starvation.py
 |-----------|-------|
 | Interfaz | eth0 |
 | Velocidad | 100 paquetes/seg |
-| Total Peticiones | 191 |
+| Total Peticiones | ilimitado |
 | MAC Spoofing | Aleatorio por petición |
 | Puerto Origen | 68 (DHCP Client) |
 | Puerto Destino | 67 (DHCP Server) |
