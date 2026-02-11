@@ -1,5 +1,6 @@
 # DHCP Starvation Attack
-🔧 Network Security Tool  
+Network Security Tool  
+
 ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
 
 Herramienta automatizada para demostración de ataques DHCP Starvation en entornos de laboratorio controlados
@@ -18,22 +19,31 @@ El objetivo de este script es simular un ataque de **DHCP Starvation** para agot
 ## 🖼️ Capturas de Pantalla
 
 - **Topología de red del escenario**
-  ![Topología](screenshots/topologia.png)
+<img width="1618" height="867" alt="Screenshot 2026-02-10 215617" src="https://github.com/user-attachments/assets/d15c4ac2-4eb8-469b-a3b4-6a0081bf4457" />
 
+---
 - **Pool DHCP antes del ataque**
-  ![DHCP Before](screenshots/dhcp_pool_before.png)
+<img width="1077" height="327" alt="image" src="https://github.com/user-attachments/assets/c32b5303-e3dc-456a-afa1-4031aadc56b1" />
+
+---
 
 - **Ejecución del ataque DHCP Starvation**
-  ![Ataque](screenshots/ataque_starvation.png)
-
+ <img width="766" height="340" alt="image" src="https://github.com/user-attachments/assets/360c5d27-d2b8-4f22-b392-7086b02a83a3" />
+ 
+---
 - **Pool DHCP agotado (100% usado)**
-  ![Pool Exhausted](screenshots/pool_exhausted.png)
+<img width="1056" height="384" alt="image" src="https://github.com/user-attachments/assets/de6d7bf1-2a2d-4d60-8a9c-ca39f390b05a" />
+
+---
 
 - **Tráfico DHCP masivo en Wireshark**
-  ![Wireshark](screenshots/wireshark_flood.png)
+<img width="847" height="559" alt="image" src="https://github.com/user-attachments/assets/d2ab6bde-7b3e-4a8b-8c57-f1d3b10715af" />
 
+---
 - **Cliente sin poder obtener IP**
-  ![Client Denied](screenshots/client_denied.png)
+<img width="796" height="172" alt="image" src="https://github.com/user-attachments/assets/b5da3bbc-18e2-4613-a61e-ef2ba0bdd876" />
+
+---
 
 ## DHCP Starvation - Pool Exhaustion Attack
 Script de Python que utiliza Scapy para agotar el pool DHCP mediante solicitudes masivas con MACs aleatorias.
@@ -48,10 +58,10 @@ pip3 install scapy
 
 ### Uso
 ```bash
-git clone https://github.com/tuusuario/DHCP-Starvation.git
+git clone https://github.com/j4vi404/DHCP-STARVATION-ATTACK.git
 cd DHCP-Starvation
-chmod +x dhcp_starvation.py
-sudo python3 dhcp_starvation.py
+chmod +x  DHCP_Starvation.py
+sudo python3 DHCP_Starvation.py
 ```
 
 ## Características
@@ -116,22 +126,6 @@ sudo python3 dhcp_starvation.py
 | Puerto Origen | 68 (DHCP Client) |
 | Puerto Destino | 67 (DHCP Server) |
 | Protocolo | UDP |
-
----
-
-### Permisos
-- Privilegios root/sudo
-- Interfaz en modo promiscuo
-- Acceso a la red objetivo
-
-### Preparación
-```bash
-# Configurar IP estática
-sudo ip addr add 192.168.1.50/24 dev eth0
-
-# Habilitar modo promiscuo
-sudo ip link set eth0 promisc on
-```
 
 ---
 
@@ -207,26 +201,8 @@ Switch(config)# ip arp inspection vlan 1,10,20
 Switch(config)# ip arp inspection validate src-mac dst-mac ip
 Switch(config)# interface GigabitEthernet0/24
 Switch(config-if)# ip arp inspection trust
+
 ```
-
----
-
-### Control 5: Monitoreo del Pool
-
-**Script de monitoreo:**
-```bash
-#!/bin/bash
-THRESHOLD=80
-while true; do
-    LEASES=$(grep -c "^lease" /var/lib/dhcp/dhcpd.leases)
-    USAGE=$((LEASES * 100 / 191))
-    echo "Pool: $USAGE%"
-    [ $USAGE -ge $THRESHOLD ] && echo "⚠️ ALERT!"
-    sleep 60
-done
-```
-
----
 
 ### Comandos de Verificación
 
@@ -248,15 +224,15 @@ show ip dhcp binding
 
 ### Plan de Respuesta a Incidentes
 
-**FASE 1: DETECCIÓN (0-2 min)**
+**FASE 1: DETECCIÓN **
 - Alerta: Pool >80%
 - Verificar: `show ip dhcp snooping statistics`
 
-**FASE 2: CONTENCIÓN (2-5 min)**
+**FASE 2: CONTENCIÓN **
 - Shutdown puerto atacante
 - Preservar evidencia
 
-**FASE 3: ERRADICACIÓN (5-15 min)**
+**FASE 3: ERRADICACIÓN **
 - `clear ip dhcp binding *`
 - Desconectar atacante
 
@@ -264,7 +240,7 @@ show ip dhcp binding
 - Renovar DHCP en clientes
 - Monitoreo intensivo
 
-**FASE 5: MEJORAS (1-2 semanas)**
+**FASE 5: MEJORAS **
 - Implementar todos los controles
 - Capacitación del equipo
 
@@ -299,21 +275,11 @@ ip arp inspection validate src-mac dst-mac ip
 logging buffered informational
 snmp-server enable traps port-security
 ```
-
 ---
 
 **⚠️ Disclaimer**
 
 Este proyecto es **exclusivamente para fines educativos**. El uso no autorizado es **ilegal**.
-
----
-
-**📚 Referencias**
-- RFC 2131 - DHCP
-- Cisco DHCP Snooping Guide
-- Arista EOS DHCP Snooping
-
-**📧 Contacto:** alexis.minyete@example.com
 
 ---
 
