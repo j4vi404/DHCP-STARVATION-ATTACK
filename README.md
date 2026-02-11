@@ -236,7 +236,7 @@ show ip dhcp binding
 - `clear ip dhcp binding *`
 - Desconectar atacante
 
-**FASE 4: RECUPERACIÓN (15-30 min)**
+**FASE 4: RECUPERACIÓN **
 - Renovar DHCP en clientes
 - Monitoreo intensivo
 
