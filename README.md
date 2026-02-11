@@ -224,15 +224,15 @@ show ip dhcp binding
 
 ### Plan de Respuesta a Incidentes
 
-**FASE 1: DETECCIÓN **
+**FASE 1: DETECCIÓN**
 - Alerta: Pool >80%
 - Verificar: `show ip dhcp snooping statistics`
 
-**FASE 2: CONTENCIÓN **
+**FASE 2: CONTENCIÓN**
 - Shutdown puerto atacante
 - Preservar evidencia
 
-**FASE 3: ERRADICACIÓN **
+**FASE 3: ERRADICACIÓN**
 - `clear ip dhcp binding *`
 - Desconectar atacante
 
@@ -240,7 +240,7 @@ show ip dhcp binding
 - Renovar DHCP en clientes
 - Monitoreo intensivo
 
-**FASE 5: MEJORAS **
+**FASE 5: MEJORAS**
 - Implementar todos los controles
 - Capacitación del equipo
 
